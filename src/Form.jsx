@@ -15,9 +15,9 @@ function Form({ setTodos }) {
   };
 
   return (
-    <div className='w-[75%] flex justify-between items-center p-6'>
+    <div className=' mx-auto flex justify-center items-center p-6 gap-2'>
       <input
-        className='border w-1/3 h-10 p-4'
+        className='border w-96 h-10 p-4'
         type='text'
         name='name'
         value={name}
@@ -25,7 +25,7 @@ function Form({ setTodos }) {
         placeholder='Enter a Todo'
       />
       <input
-        className='border w-1/3 h-10 p-4'
+        className='border w-48 h-10 p-4'
         type='date'
         name='date'
         value={date}
@@ -33,10 +33,9 @@ function Form({ setTodos }) {
         placeholder='Select a date'
       />
       <button
-        className='bg-green-600 h-8 text-white w-16 rounded-xl text-center align-middle '
+        className='bg-green-600 text-white w-16 h-10 p-4 rounded-md'
         onClick={handleClick}
-      >
-        Add
+      >Add
       </button>
     </div>
   );
