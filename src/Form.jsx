@@ -1,44 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react'
+import { useRef } from 'react'
 
-function Form({ setTodos }) {
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
+function Form ({setTodos}) {
+    
+    const nameref = useRef()
+    const dateref = useRef()
 
-  const handleClick = () => {
-    if (name && date) {
-      setTodos((prev) => [...prev, { name, date }]);
-
-      // Clear input fields
-      setName('');
-      setDate('');
+    const handleClick = () => {
+        
+        console.log(nameref.current.value,dateref.current.value)
+        const obj = {
+            name : nameref.current.value,
+            date : dateref.current.value,
+            id : Math.random()
+        }
+        setTodos((prev) => ([...prev, obj]));
+    
+        nameref.current.value = "";
+        dateref.current.value = "";
+        
     }
-  };
+
+
 
   return (
-    <div className=' mx-auto flex justify-center items-center p-6 gap-2'>
-      <input
-        className='border w-96 h-10 p-4'
-        type='text'
-        name='name'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder='Enter a Todo'
-      />
-      <input
-        className='border w-48 h-10 p-4'
-        type='date'
-        name='date'
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        placeholder='Select a date'
-      />
-      <button
-        className='bg-green-600 text-white w-16 h-10 p-4 rounded-md'
-        onClick={handleClick}
-      >Add
-      </button>
+    <div className='w-[80%] flex justify-between items-center  gap-2'>
+        <input ref={nameref} className='border flex-grow h-10 p-4 rounded-md' type="text" name="name" placeholder='Enter a Todo' />
+        <input ref={dateref} className='border  h-10 p-4 rounded-md' type="date" name="date" placeholder='Enter a Todo' />
+        <button className='bg-green-600 h-10 text-white flex-grow rounded-md text-center align-middle ' onClick={handleClick}>Add</button>
     </div>
-  );
+  )
 }
 
-export default Form;
+export default Form
