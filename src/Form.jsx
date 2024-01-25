@@ -8,7 +8,7 @@ function Form ({setTodos}) {
 
     const handleClick = () => {
         
-        console.log(nameref.current.value,dateref.current.value)
+        if(!nameref.current.value && !dateref.current.value) return ;
         const obj = {
             name : nameref.current.value,
             date : dateref.current.value,
